@@ -1,0 +1,154 @@
+<?php
+
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\Http\RequestHandlers\AppleTouchIconPng;
+use Fisharebest\Webtrees\Http\RequestHandlers\BrowserconfigXml;
+use Fisharebest\Webtrees\Http\RequestHandlers\SearchQuickAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\WebmanifestJson;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleFooterInterface;
+use Fisharebest\Webtrees\Module\ModuleGlobalInterface;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
+use Fisharebest\Webtrees\View;
+use Fisharebest\Webtrees\Webtrees;
+use Psr\Http\Message\ServerRequestInterface;
+
+/**
+ * @var string                 $content
+ * @var string|null            $meta_description
+ * @var string|null            $meta_robots
+ * @var ServerRequestInterface $request
+ * @var string                 $title
+ * @var Tree|null              $tree
+ */
+
+$theme = Registry::container()->get(ModuleThemeInterface::class);
+$theme_palette = $theme_palette ?? ($palette ?? $theme->defaultPalette());
+$palette_slug = $theme_palette ? strtolower(preg_replace('/[^a-z0-9-]+/', '-', (string) $theme_palette)) : '';
+$palette_class = $palette_slug ? ' k-theme--' . $palette_slug : '';
+$body_class = trim('k-theme' . $palette_class);
+$logo_light = $theme->assetUrl('images/logo-light.svg');
+$logo_dark = $theme->assetUrl('images/logo-dark.svg');
+?>
+
+<!DOCTYPE html>
+<html dir="<?= I18N::locale()->direction() ?>" lang="<?= I18N::locale()->languageTag() ?>">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="csrf" content="<?= e(csrf_token()) ?>">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="<?= e($meta_robots ?? 'noindex,nofollow') ?>">
+        <meta name="generator" content="<?= e(Webtrees::NAME) ?> <?= e(Webtrees::VERSION) ?>">
+        <meta name="description" content="<?= $meta_description ?? '' ?>">
+
+        <title>
+            <?= strip_tags($title) ?>
+            <?php if ($tree !== null && $tree->getPreference('META_TITLE') !== '') : ?>
+                – <?= e($tree->getPreference('META_TITLE')) ?>
+            <?php endif ?>
+        </title>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="<?= e(route(AppleTouchIconPng::class)) ?>">
+        <link rel="icon" sizes="32x32" href="<?= e(asset('favicon-32.png')) ?>">
+        <link rel="icon" sizes="192x192" href="<?= e(asset('favicon-192.png')) ?>">
+        <meta name="msapplication-config" content="<?= e(route(BrowserconfigXml::class)) ?>">
+
+        <link rel="manifest" href="<?= e(route(WebmanifestJson::class)) ?>" crossorigin="use-credentials">
+
+        <!-- Font Awesome 7 (matches webtrees 2.2.5 core) -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css">
+
+        <link rel="stylesheet" href="<?= e(asset('css/vendor.min.css')) ?>">
+        <?php foreach ($theme->stylesheets() as $stylesheet) : ?>
+            <link rel="stylesheet" href="<?= e($stylesheet) ?>">
+        <?php endforeach ?>
+
+        <?= View::stack('styles') ?>
+
+        <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static fn (ModuleGlobalInterface $module): string => $module->headContent())->implode('') ?>
+    </head>
+
+    <body class="wt-global wt-theme-<?= e($theme->name()) ?> wt-route-<?= e(basename(strtr(Validator::attributes($request)->route()->name, ['\\' => '/']))) ?> <?= e($body_class) ?>">
+        <header class="k-header d-print-none">
+            <div class="k-brand">
+                <img class="k-logo k-logo--light" src="<?= e($logo_light) ?>" alt="<?= e(I18N::translate('K-Theme logo')) ?>">
+                <img class="k-logo k-logo--dark" src="<?= e($logo_dark) ?>" alt="<?= e(I18N::translate('K-Theme logo')) ?>">
+                <div class="k-brand__title">
+                    <?= e($tree?->title() ?? I18N::translate('Family tree')) ?>
+                </div>
+            </div>
+
+            <?php if ($tree !== null) : ?>
+                <div class="k-search">
+                    <form method="post" action="<?= e(route(SearchQuickAction::class, ['tree' => $tree->name()])) ?>" role="search">
+                        <label class="visually-hidden" for="quick-search"><?= I18N::translate('Search') ?></label>
+                        <div class="k-search__field">
+                            <input type="search" id="quick-search" name="query" size="15" placeholder="<?= I18N::translate('Search') ?>">
+                            <button type="submit" class="k-search__button" aria-label="<?= I18N::translate('Search') ?>">
+                                <?= view('icons/search') ?>
+                            </button>
+                        </div>
+                        <?= csrf_field() ?>
+                    </form>
+                </div>
+            <?php endif ?>
+
+            <div class="k-user-menu">
+                <ul class="nav wt-user-menu">
+                    <?php foreach ($theme->userMenu($tree) as $menu) : ?>
+                        <?= view('components/menu-item', ['menu' => $menu]) ?>
+                    <?php endforeach ?>
+                </ul>
+            </div>
+        </header>
+
+        <?php if ($tree !== null) : ?>
+            <nav class="k-navbar d-print-none" aria-label="<?= e(I18N::translate('Main menu')) ?>">
+                <button class="k-nav-toggle" type="button" data-k-nav-toggle>
+                    <?= e(I18N::translate('Menu')) ?>
+                </button>
+                <div class="k-nav" data-k-nav>
+                    <ul class="nav wt-genealogy-menu">
+                        <?php foreach ($theme->genealogyMenu($tree) as $menu) : ?>
+                            <?= view('components/menu-item', ['menu' => $menu]) ?>
+                        <?php endforeach ?>
+                    </ul>
+                </div>
+            </nav>
+        <?php endif ?>
+
+        <main id="content" class="k-main k-animate">
+            <div class="flash-messages">
+                <?php foreach (FlashMessages::getMessages() as $message) : ?>
+                    <div class="alert alert-<?= e($message->status) ?> alert-dismissible" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= I18N::translate('close') ?>">
+                        </button>
+                        <?= $message->text ?>
+                    </div>
+                <?php endforeach ?>
+            </div>
+
+            <?= $content ?>
+        </main>
+
+        <footer class="k-footer d-print-none">
+            <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(static fn (ModuleFooterInterface $module): string => $module->getFooter($request))->implode('') ?>
+        </footer>
+
+        <script src="<?= e(asset('js/vendor.min.js')) ?>"></script>
+        <script src="<?= e(asset('js/webtrees.min.js')) ?>"></script>
+        <?php foreach ($theme->scripts() as $script) : ?>
+            <script src="<?= e($script) ?>"></script>
+        <?php endforeach ?>
+
+        <?= View::stack('javascript') ?>
+
+        <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static fn (ModuleGlobalInterface $module): string => $module->bodyContent())->implode('') ?>
+    </body>
+</html>

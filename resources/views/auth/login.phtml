@@ -1,0 +1,35 @@
+<?php
+
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Registry;
+
+$form_html = $form ?? ($login_form ?? ($content ?? ''));
+$theme = Registry::container()->get(ModuleThemeInterface::class);
+$logo_light = $theme->assetUrl('images/logo-light.svg');
+$logo_dark = $theme->assetUrl('images/logo-dark.svg');
+?>
+<div class="k-login k-login--centered">
+  <header class="k-login__topbar">
+    <div class="k-login__logo">
+      <img class="k-logo k-logo--light" src="<?= e($logo_light) ?>" alt="<?= e(I18N::translate('K-Theme logo')) ?>">
+      <img class="k-logo k-logo--dark" src="<?= e($logo_dark) ?>" alt="<?= e(I18N::translate('K-Theme logo')) ?>">
+      <span><?= e(I18N::translate('webtrees')) ?></span>
+    </div>
+  </header>
+
+  <main class="k-login__content">
+    <div class="k-login__headline">
+      <h1><?= e(I18N::translate('Welcome to this genealogy website')) ?></h1>
+      <p><?= e(I18N::translate('Anyone with a user account can access this website.')) ?></p>
+    </div>
+
+    <div class="k-login__card">
+      <div class="k-login__form">
+        <?= $form_html ?>
+      </div>
+    </div>
+  </main>
+</div>

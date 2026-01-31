@@ -1,0 +1,11 @@
+{
+  "name": "kaleel/k-theme",
+  "description": "K-Theme module for webtrees 2.x",
+  "type": "webtrees-module",
+  "license": "GPL-3.0-or-later",
+  "autoload": {
+    "psr-4": {
+      "WebtreesModules\\KTheme\\": ""
+    }
+  }
+}

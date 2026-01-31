@@ -1,0 +1,21 @@
+/* K-Theme light palette */
+
+body.k-theme.k-theme--light,
+.wt-theme-k-theme.wt-palette-light,
+.wt-theme-k-theme.wt-palette-default,
+.wt-theme-k-theme.wt-palette-k-light {
+  --k-bg: #f7f8fb;
+  --k-surface: #ffffff;
+  --k-surface-2: #f4f6fb;
+  --k-text: #1f2937;
+  --k-muted: #6b7280;
+  --k-border: rgba(15, 23, 42, 0.08);
+  --k-accent: #1f4bdd;
+  --k-accent-contrast: #ffffff;
+  --k-shadow-1: 0 6px 18px rgba(15, 23, 42, 0.08);
+  --k-shadow-2: 0 14px 30px rgba(15, 23, 42, 0.12);
+}
+
+body.wt-route-LoginPage .wt-page-options-login {
+  background: rgba(255, 255, 255, 0.9);
+}

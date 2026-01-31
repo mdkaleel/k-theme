@@ -1,0 +1,17 @@
+<?php
+
+declare(strict_types=1);
+
+$title = $title ?? '';
+$content = $content ?? '';
+$footer = $footer ?? '';
+?>
+<section class="k-card">
+  <?php if ($title !== ''): ?>
+    <div class="k-card__title"><?= $title ?></div>
+  <?php endif; ?>
+  <div class="k-card__content"><?= $content ?></div>
+  <?php if ($footer !== ''): ?>
+    <div class="k-card__footer"><?= $footer ?></div>
+  <?php endif; ?>
+</section>

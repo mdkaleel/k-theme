@@ -1,0 +1,229 @@
+/* K-Theme login */
+
+.k-login {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(circle at top right, rgba(31, 75, 221, 0.08), transparent 55%),
+    radial-gradient(circle at 20% 30%, rgba(31, 75, 221, 0.06), transparent 50%),
+    var(--k-bg);
+}
+
+.k-login__topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2.5rem;
+  border-bottom: 1px solid var(--k-border);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+}
+
+.k-login__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  color: var(--k-text);
+  font-size: 1.1rem;
+}
+
+.k-login__logo img {
+  width: 36px;
+  height: 36px;
+}
+
+.k-login__content {
+  flex: 1 1 auto;
+  display: grid;
+  place-items: center;
+  padding: 3rem 1.5rem 4rem;
+  text-align: center;
+}
+
+.k-login__headline h1 {
+  font-size: clamp(1.9rem, 2vw + 1.4rem, 2.6rem);
+  margin: 0 0 0.6rem;
+}
+
+.k-login__headline p {
+  color: var(--k-muted);
+  margin: 0 0 2rem;
+}
+
+.k-login__card {
+  width: min(420px, 100%);
+  background: var(--k-surface);
+  border: 1px solid var(--k-border);
+  border-radius: 20px;
+  padding: 2rem 2.2rem;
+  box-shadow: var(--k-shadow-2);
+  text-align: left;
+}
+
+/* Login page keeps header; hide the primary nav bar only */
+body.wt-route-AuthLogin .k-navbar,
+body.wt-route-Login .k-navbar,
+body.wt-route-LoginPage .k-navbar {
+  display: none;
+}
+
+/* Style default login markup when the custom view is not used */
+body.wt-route-LoginPage .k-main {
+  display: block;
+  padding: 2rem 1.5rem 3rem;
+  text-align: center;
+}
+
+body.wt-route-LoginPage .wt-page-title,
+body.wt-route-LoginPage .wt-page-title + p {
+  text-align: center;
+}
+
+body.wt-route-LoginPage .wt-page-title {
+  margin-bottom: 0.35rem;
+}
+
+body.wt-route-LoginPage .wt-page-title + p {
+  margin-bottom: 0.6rem;
+}
+
+body.wt-route-LoginPage .wt-page-options-login {
+  width: min(520px, 100%);
+  margin: 0.75rem auto 0;
+  background: var(--k-surface);
+  border: 1px solid var(--k-border);
+  border-radius: 8px;
+  padding: 2.5rem;
+  box-shadow: var(--k-shadow-2);
+  backdrop-filter: blur(18px);
+}
+
+body.wt-route-LoginPage .wt-page-options-login .hideShowPassword-wrapper {
+  position: relative !important;
+}
+
+body.wt-route-LoginPage .hideShowPassword-wrapper input[type="password"] + button,
+body.wt-route-LoginPage .hideShowPassword-wrapper input[type="password"] ~ button {
+  right: 0.6rem !important;
+  top: 50% !important;
+  margin-top: 0 !important;
+  transform: translateY(-50%) !important;
+}
+
+body.wt-route-LoginPage .wt-page-options-login .row {
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+body.wt-route-LoginPage .wt-page-options-login .wt-page-options-label {
+  font-weight: 600;
+}
+
+body.wt-route-LoginPage .wt-page-options-login .btn-primary {
+  border-radius: 12px;
+  padding: 0.65rem 1.2rem;
+}
+
+body.wt-route-LoginPage .wt-page-options-login .form-control {
+  height: 44px;
+}
+
+body.wt-route-LoginPage .wt-page-options-login .btn-link {
+  margin-left: 0.75rem;
+}
+
+body.wt-route-LoginPage .k-header {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: none;
+}
+
+/* Add input icons via background SVGs */
+body.wt-route-LoginPage #username,
+body.wt-route-LoginPage #password {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  background-repeat: no-repeat;
+  background-position: 0.75rem center;
+  background-size: 18px 18px;
+}
+
+body.wt-route-LoginPage #username {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%2398a4b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E");
+}
+
+body.wt-route-LoginPage #password {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%2398a4b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='11' width='18' height='11' rx='2'/%3E%3Cpath d='M7 11V7a5 5 0 0 1 10 0v4'/%3E%3C/svg%3E");
+}
+
+/* Replace show/hide text with an icon */
+body.wt-route-LoginPage button[data-wt-show-password-text],
+body.wt-route-LoginPage button[data-wt-hide-password-text],
+body.wt-route-LoginPage .wt-page-options-login #password + button,
+body.wt-route-LoginPage .wt-page-options-login .wt-page-options-value button[type="button"] {
+  border: none;
+  background: transparent;
+  color: transparent;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  right: 0.6rem;
+  top: 50% !important;
+  margin-top: 0 !important;
+  transform: translateY(-50%) !important;
+  z-index: 2;
+}
+
+body.wt-route-LoginPage button[data-wt-show-password-text]::before,
+body.wt-route-LoginPage button[data-wt-hide-password-text]::before,
+body.wt-route-LoginPage .wt-page-options-login #password + button::before,
+body.wt-route-LoginPage .wt-page-options-login .wt-page-options-value button[type="button"]::before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: 0 auto;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2398a4b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E") no-repeat center;
+}
+
+body.wt-route-LoginPage .wt-page-options-value {
+  position: relative;
+}
+
+body.wt-route-LoginPage .wt-page-options-login .wt-page-options-value .btn {
+  border-radius: 10px;
+}
+
+.k-login__form {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.k-login__form input[type="text"],
+.k-login__form input[type="password"],
+.k-login__form input[type="email"],
+.k-login__form select {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  border-radius: 12px;
+  border: 1px solid var(--k-border);
+  background: var(--k-surface-2);
+  color: var(--k-text);
+}
+
+.k-login__form button,
+.k-login__form input[type="submit"] {
+  width: 100%;
+  border-radius: 12px;
+  border: none;
+  background: var(--k-accent);
+  color: var(--k-accent-contrast);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+}
+
+@media (max-width: 720px) {
+  .k-login__topbar {
+    padding: 1rem 1.5rem;
+  }
+}

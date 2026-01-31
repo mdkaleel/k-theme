@@ -1,0 +1,106 @@
+/* K-Theme dark palette */
+
+body.k-theme.k-theme--dark,
+.wt-theme-k-theme.wt-palette-dark,
+.wt-theme-k-theme.wt-palette-k-dark {
+  --k-bg: #0b0f19;
+  --k-surface: #121826;
+  --k-surface-2: #1a2234;
+  --k-text: #e8edf6;
+  --k-muted: #98a4b8;
+  --k-border: rgba(148, 163, 184, 0.18);
+  --k-accent: #6aa6ff;
+  --k-accent-contrast: #0b0f19;
+  --k-shadow-1: 0 12px 30px rgba(5, 8, 16, 0.45);
+  --k-shadow-2: 0 20px 50px rgba(2, 4, 10, 0.6);
+}
+
+body.k-theme.k-theme--dark .k-login__topbar {
+  background: rgba(12, 16, 28, 0.75);
+}
+
+body.k-theme.k-theme--dark .card,
+body.k-theme.k-theme--dark .card-header,
+body.k-theme.k-theme--dark .card-body,
+body.k-theme.k-theme--dark .dropdown-menu,
+body.k-theme.k-theme--dark .modal-content,
+body.k-theme.k-theme--dark .list-group-item,
+body.k-theme.k-theme--dark .table {
+  background-color: var(--k-surface) !important;
+  color: var(--k-text) !important;
+  border-color: var(--k-border) !important;
+}
+
+body.k-theme.k-theme--dark .table thead th,
+body.k-theme.k-theme--dark .table tbody td {
+  color: var(--k-text) !important;
+}
+
+body.k-theme.k-theme--dark .dropdown-item,
+body.k-theme.k-theme--dark .nav-link,
+body.k-theme.k-theme--dark .form-control,
+body.k-theme.k-theme--dark .form-select,
+body.k-theme.k-theme--dark .btn-link {
+  color: var(--k-text) !important;
+}
+
+body.k-theme.k-theme--dark .form-control,
+body.k-theme.k-theme--dark .form-select,
+body.k-theme.k-theme--dark .input-group-text {
+  background-color: var(--k-surface-2) !important;
+  border-color: var(--k-border) !important;
+}
+
+body.k-theme.k-theme--dark .dropdown-item:hover,
+body.k-theme.k-theme--dark .dropdown-item:focus {
+  background-color: var(--k-surface-2) !important;
+  color: var(--k-text) !important;
+}
+
+body.k-theme.k-theme--dark .modal-header,
+body.k-theme.k-theme--dark .modal-footer {
+  border-color: var(--k-border) !important;
+}
+
+body.k-theme.k-theme--dark .k-logo--dark,
+.wt-theme-k-theme.wt-palette-dark .k-logo--dark,
+.wt-theme-k-theme.wt-palette-k-dark .k-logo--dark {
+  display: inline;
+}
+
+body.k-theme.k-theme--dark .k-logo--light,
+.wt-theme-k-theme.wt-palette-dark .k-logo--light,
+.wt-theme-k-theme.wt-palette-k-dark .k-logo--light {
+  display: none;
+}
+
+body.k-theme.k-theme--dark .k-header,
+body.k-theme.k-theme--dark .k-user-menu .dropdown-menu {
+  background: var(--k-surface);
+}
+
+body.k-theme.k-theme--dark .k-user-menu .nav-link,
+body.k-theme.k-theme--dark .k-user-menu .dropdown-item,
+body.k-theme.k-theme--dark .wt-page-title,
+body.k-theme.k-theme--dark .wt-page-title + p,
+body.k-theme.k-theme--dark .wt-page-options-label {
+  color: var(--k-text) !important;
+}
+
+body.k-theme.k-theme--dark .wt-page-options-login {
+  background: var(--k-surface);
+  color: var(--k-text);
+}
+
+body.k-theme.k-theme--dark.wt-route-LoginPage #username {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23cbd5e1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E");
+}
+
+body.k-theme.k-theme--dark.wt-route-LoginPage #password {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23cbd5e1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='11' width='18' height='11' rx='2'/%3E%3Cpath d='M7 11V7a5 5 0 0 1 10 0v4'/%3E%3C/svg%3E");
+}
+
+body.k-theme.k-theme--dark.wt-route-LoginPage button[data-wt-show-password-text]::before,
+body.k-theme.k-theme--dark.wt-route-LoginPage button[data-wt-hide-password-text]::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23cbd5e1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E");
+}
