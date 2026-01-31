@@ -1,2 +1,12 @@
-*.zip
+# OS
 .DS_Store
+
+# Archives
+*.zip
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary
+*.log
