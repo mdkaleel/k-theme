@@ -55,6 +55,7 @@ class KTheme extends MinimalTheme implements ModuleCustomInterface, ModuleConfig
     {
         return [
             $this->assetUrl('css/k-theme.base.css'),
+            $this->assetUrl('css/k-theme.icons.css'),
             $this->assetUrl('css/k-theme.light.css'),
             $this->assetUrl('css/k-theme.dark.css'),
             $this->assetUrl('css/k-theme.login.css'),

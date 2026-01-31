@@ -79,6 +79,7 @@
     i.className = `fa-solid ${icon} k-block-icon`;
     i.setAttribute('aria-hidden', 'true');
     header.prepend(i);
+    header.classList.add('k-has-icon');
   };
 
   // Run once on existing headers.

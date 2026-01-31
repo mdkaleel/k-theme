@@ -1,0 +1,72 @@
+/* K-Theme navigation icon styles */
+
+.k-nav li > a::before {
+  display: block;
+  font-size: 1.9rem; /* beefier default pseudo-icons (≈30px) */
+  line-height: 1;
+}
+
+.k-nav a i {
+  font-size: 1.5rem;
+}
+
+.k-nav__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  background: var(--k-surface-2);
+  color: var(--k-muted);
+  font-size: 1.5rem;
+  transition: color 160ms ease, background 160ms ease;
+}
+
+/* Explicit glyphs + sizing for main menu items (matches your devtools tweak) */
+.k-nav .menu-tree > a::before {
+  font: var(--fa-font-solid, normal 900 1em/1 "Font Awesome 6 Free");
+  font-size: 30px;
+  content: "\f015";
+}
+
+.k-nav .menu-chart > a::before {
+  font: var(--fa-font-solid, normal 900 1em/1 "Font Awesome 6 Free");
+  font-size: 30px;
+  content: "\f201";
+}
+
+.k-nav .menu-list > a::before {
+  font: var(--fa-font-solid, normal 900 1em/1 "Font Awesome 6 Free");
+  font-size: 30px;
+  content: "\f0ca";
+}
+
+.k-nav .menu-calendar > a::before {
+  font: var(--fa-font-solid, normal 900 1em/1 "Font Awesome 6 Free");
+  font-size: 30px;
+  content: "\f073";
+}
+
+.k-nav .menu-report > a::before {
+  font: var(--fa-font-solid, normal 900 1em/1 "Font Awesome 6 Free");
+  font-size: 30px;
+  content: "\f15c";
+}
+
+.k-nav .menu-clippings > a::before {
+  font: var(--fa-font-solid, normal 900 1em/1 "Font Awesome 6 Free");
+  font-size: 30px;
+  content: "\f0c5";
+}
+
+.k-nav .menu-search > a::before {
+  font: var(--fa-font-solid, normal 900 1em/1 "Font Awesome 6 Free");
+  font-size: 30px;
+  content: "\f002";
+}
+
+.k-nav .active > a .k-nav__icon,
+.k-nav a:hover .k-nav__icon {
+  color: var(--k-accent);
+}

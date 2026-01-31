@@ -200,39 +200,11 @@ body.k-theme,
   transition: background 160ms ease, color 160ms ease, transform 160ms ease;
 }
 
-.k-nav li > a::before {
-  display: block;
-  font-size: 1.2rem;
-  line-height: 1;
-}
-
-.k-nav a i {
-  font-size: 1rem;
-}
-
 .k-nav a:hover,
 .k-nav .active > a {
   color: var(--k-text);
   background: var(--k-surface-2);
   transform: translateY(-1px);
-}
-
-.k-nav__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 12px;
-  background: var(--k-surface-2);
-  color: var(--k-muted);
-  font-size: 1rem;
-  transition: color 160ms ease, background 160ms ease;
-}
-
-.k-nav .active > a .k-nav__icon,
-.k-nav a:hover .k-nav__icon {
-  color: var(--k-accent);
 }
 
 .k-nav__link.is-active,
@@ -332,8 +304,8 @@ body.k-theme,
   gap: 0.6rem;
 }
 
-/* Remove core webtrees default wrench/preface icon; we inject our own. */
-.wt-block-header::before {
+/* Remove core webtrees default wrench/preface icon only when we inject our own. */
+.wt-block-header.k-has-icon::before {
   content: none !important;
   display: none !important;
 }
