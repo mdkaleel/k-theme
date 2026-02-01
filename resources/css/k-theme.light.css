@@ -19,3 +19,28 @@ body.k-theme.k-theme--light,
 body.wt-route-LoginPage .wt-page-options-login {
   background: rgba(255, 255, 255, 0.9);
 }
+
+/* ==========================================================
+   Ancestors chart – LIGHT
+   ========================================================== */
+
+body.k-theme.k-theme--light .wt-chart-box {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #1f2937;
+}
+
+body.k-theme.k-theme--light .wt-chart-box-name {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+body.k-theme.k-theme--light .wt-chart-box-facts {
+  color: #334155;
+}
+
+body.k-theme.k-theme--light .wt-chart-ancestors svg line,
+body.k-theme.k-theme--light .wt-chart-ancestors svg path {
+  stroke: #64748b;
+  stroke-width: 1.2;
+}

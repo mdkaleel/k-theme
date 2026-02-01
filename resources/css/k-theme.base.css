@@ -18,6 +18,14 @@ body.k-theme,
   box-sizing: border-box;
 }
 
+.k-nav a::before {
+  display: inline-block;
+  font-family: var(--fa-font-solid);
+  font-weight: 900;
+  margin-bottom: 0.15rem;
+}
+
+
 .k-theme a {
   color: var(--k-text);
   text-decoration: none;
@@ -248,6 +256,106 @@ body.k-theme,
   box-shadow: var(--k-shadow-1);
 }
 
+/* ======================================================
+   Bootstrap tables – enforce K-Theme text colors
+   ====================================================== */
+
+.k-theme .table {
+  --bs-table-color: var(--k-text);
+  --bs-table-color-state: var(--k-text);
+  --bs-table-color-type: var(--k-text);
+}
+
+.k-theme .table th,
+.k-theme .table td {
+  color: var(--k-text);
+}
+
+/* ======================================================
+   K-Theme – Statistics / Facts tables
+   ====================================================== */
+
+.k-theme .wt-facts-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: transparent;
+}
+
+/* Rows */
+.k-theme .wt-facts-table tbody tr {
+  transition: background 160ms ease;
+}
+
+/* Cells */
+.k-theme .wt-facts-table th,
+.k-theme .wt-facts-table td {
+  padding: 0.75rem 0.75rem;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--k-border);
+}
+
+/* Label column */
+.k-theme .wt-facts-table th {
+  font-weight: 600;
+  /*color: var(--k-text);*/
+  color: var(--k-text-strong);
+  text-align: left;
+  white-space: nowrap;
+}
+
+/* Value column */
+.k-theme .wt-facts-table td {
+  text-align: right;
+  color: var(--k-text);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Percentages (second line in same cell) */
+.k-theme .wt-facts-table td small,
+.k-theme .wt-facts-table td span {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.85em;
+  color: var(--k-muted);
+}
+
+/* Hover effect (subtle) */
+.k-theme .wt-facts-table tbody tr:hover {
+  background: var(--k-surface-2);
+}
+
+/* Remove last divider */
+.k-theme .wt-facts-table tbody tr:last-child th,
+.k-theme .wt-facts-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+.k-theme table.dataTable,
+.wt-theme-k-theme table.dataTable {
+  background: var(--k-surface);
+  color: var(--k-text);
+}
+
+.k-theme table.dataTable tbody tr:nth-of-type(odd),
+.wt-theme-k-theme table.dataTable tbody tr:nth-of-type(odd) {
+  background: var(--k-surface-2);
+}
+
+.k-theme table.dataTable > :not(caption) > * > * ,
+.wt-theme-k-theme table.dataTable > :not(caption) > * > *  {
+  background: transparent;
+  color: var(--k-text);
+  border-color: var(--k-border);
+}
+
+.k-theme table.dataTable thead th,
+.wt-theme-k-theme table.dataTable thead th {
+  background: var(--k-surface-2);
+  color: var(--k-text);
+}
+
 .k-theme .card-header,
 .k-theme .card-body {
   background: transparent;
@@ -271,6 +379,60 @@ body.k-theme,
   background: var(--k-surface-2);
   color: var(--k-text);
 }
+
+/*K added in My account page the text is not appearing*/
+.k-theme .form-text {
+  color: var(--k-muted);
+  font-size: 0.85rem;
+  line-height: 1.35;
+}
+
+/* ======================================================
+   Tom Select (webtrees select widgets)
+   ====================================================== */
+
+.k-theme .ts-wrapper {
+  --ts-bg: var(--k-surface-2);
+  --ts-border: var(--k-border);
+  --ts-text: var(--k-text);
+  --ts-muted: var(--k-muted);
+}
+
+.k-theme .ts-control {
+  background: var(--k-surface-2);
+  color: var(--k-text);
+  border: 1px solid var(--k-border);
+  border-radius: 8px;
+  min-height: calc(1.5em + 0.75rem + 2px);
+}
+
+.k-theme .ts-control .item {
+  color: var(--k-text);
+}
+
+.k-theme .ts-control .placeholder {
+  color: var(--k-muted);
+}
+
+.k-theme .ts-control input {
+  color: var(--k-text);
+}
+
+.k-theme .ts-dropdown {
+  background: var(--k-surface);
+  border: 1px solid var(--k-border);
+  box-shadow: var(--k-shadow-2);
+}
+
+.k-theme .ts-dropdown .option {
+  color: var(--k-text);
+}
+
+.k-theme .ts-dropdown .option.active,
+.k-theme .ts-dropdown .option:hover {
+  background: var(--k-surface-2);
+}
+
 
 .k-theme .btn-primary {
   background: var(--k-accent);
@@ -311,6 +473,7 @@ body.k-theme,
 }
 
 /* Favourites block icon (CSS fallback if JS injector misses it) */
+.wt-block-header-gedcom_favorites::before,
 .wt-block-header-user_favorites::before {
   /*font: var(--fa-font-solid, normal 900 1em/1 "Font Awesome 6 Free");*/
   font: var(--fa-font-solid);
@@ -343,6 +506,66 @@ body.k-theme,
   /*font: var(--fa-font-solid, normal 900 1em/1 "Font Awesome 6 Free");*/
   font: var(--fa-font-solid);
   content: "\f144";
+  display: inline-block;
+  width: 1.6rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  text-align: center;
+  border-radius: 8px;
+  background: var(--k-surface-2);
+  color: var(--k-accent);
+}
+
+.wt-block-header-todays_events::before {
+  /*font: var(--fa-font-solid, normal 900 1em/1 "Font Awesome 6 Free");*/
+  font: var(--fa-font-solid);
+  content: "\f133";
+  display: inline-block;
+  width: 1.6rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  text-align: center;
+  border-radius: 8px;
+  background: var(--k-surface-2);
+  color: var(--k-accent);
+}
+
+.wt-block-header-upcoming_events::before {
+  /*font: var(--fa-font-solid, normal 900 1em/1 "Font Awesome 6 Free");*/
+  font: var(--fa-font-solid);
+  content: "\f133";
+  display: inline-block;
+  width: 1.6rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  text-align: center;
+  border-radius: 8px;
+  background: var(--k-surface-2);
+  color: var(--k-accent);
+}
+
+.wt-block-header-logged_in::before {
+  /*
+  font: var(--fa-font-solid, normal 900 1em/1 "Font Awesome 6 Free");  
+  */
+  font: var(--fa-font-solid);
+  content: "\f007"; /* user */
+  display: inline-block;
+  width: 1.6rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  text-align: center;
+  border-radius: 8px;
+  background: var(--k-surface-2);
+  color: var(--k-accent);
+}
+
+.wt-block-header-gedcom_news::before {
+  /*
+  font: var(--fa-font-solid, normal 900 1em/1 "Font Awesome 6 Free");  
+  */
+  font: var(--fa-font-solid);
+  content: "\f1ea"; /* newspaper */
   display: inline-block;
   width: 1.6rem;
   height: 1.6rem;
@@ -452,7 +675,7 @@ body.k-theme,
 }
 
 .k-footer {
-  padding: 1.5rem 2rem 2.5rem;
+  padding: 1.5rem 2rem 1.5rem;
   color: var(--k-muted);
 }
 
@@ -519,3 +742,132 @@ body.k-theme,
 .k-nav .menu-report > a::before { font: var(--fa-font-solid, normal 900 1em/1 "Font Awesome 6 Free"); content: "\f15c"; }
 .k-nav .menu-clippings > a::before { font: var(--fa-font-solid, normal 900 1em/1 "Font Awesome 6 Free"); content: "\f0c5"; }
 .k-nav .menu-search > a::before { font: var(--fa-font-solid, normal 900 1em/1 "Font Awesome 6 Free"); content: "\f002"; }
+
+
+/* ======================================================
+   Bootstrap table variables  K-Theme surfaces
+   Fixes DataTables background in light & dark mode
+   ====================================================== */
+
+.k-theme,
+.wt-theme-k-theme {
+  --bs-body-bg: var(--k-bg);
+  --bs-body-color: var(--k-text);
+
+  --bs-table-bg: var(--k-surface);
+  --bs-table-color: var(--k-text);
+
+  --bs-table-striped-bg: var(--k-surface-2);
+  --bs-table-striped-color: var(--k-text);
+
+  --bs-table-border-color: var(--k-border);
+
+  --bs-table-hover-bg: color-mix(in srgb, var(--k-accent) 12%, var(--k-surface));
+  --bs-table-hover-color: var(--k-text);
+}
+
+/* ==========================================================
+   Ancestors / Tree charts – base styling
+   ========================================================== */
+
+.k-theme .wt-chart-ancestors {
+  color: var(--k-text);
+}
+
+/* Individual person box */
+.k-theme .wt-chart-ancestors .person_box,
+.k-theme .wt-chart-ancestors .chart-box,
+.k-theme .wt-chart-ancestors .chart-person {
+  background-color: var(--k-surface-1);
+  color: var(--k-text);
+  border: 1px solid var(--k-border);
+  border-radius: .5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.12);
+}
+
+/* Names */
+.k-theme .wt-chart-ancestors .NAME,
+.k-theme .wt-chart-ancestors .SURN {
+  color: var(--k-text-strong);
+  font-weight: 600;
+}
+
+/* Facts (birth, death, place, etc.) */
+.k-theme .wt-chart-ancestors .facts,
+.k-theme .wt-chart-ancestors .birth,
+.k-theme .wt-chart-ancestors .death {
+  color: var(--k-text-muted);
+  font-size: .875rem;
+}
+
+/* Links inside chart */
+.k-theme .wt-chart-ancestors a {
+  color: var(--k-link);
+}
+
+.k-theme .wt-chart-ancestors a:hover {
+  color: var(--k-link-hover);
+}
+/* =========================================
+   K-Theme – Bootstrap table integration
+   ========================================= */
+
+.k-theme {
+  /* Core table variables */
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--k-text);
+  --bs-table-border-color: var(--k-border);
+
+  /* Row states */
+  --bs-table-striped-bg: var(--k-surface-2);
+  --bs-table-hover-bg: var(--k-surface-2);
+  --bs-table-active-bg: var(--k-surface-3);
+}
+
+/* Ensure table headers inherit theme text */
+.k-theme .table th {
+  color: var(--k-text-strong);
+}
+
+/* Ensure table cells inherit theme text */
+.k-theme .table td {
+  color: var(--k-text);
+}
+
+
+/* ------------------------------------------------------------------
+   Statistics / facts tables (home page)
+------------------------------------------------------------------ */
+
+.k-theme table.wt-facts-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--k-surface);
+  border: 1px solid var(--k-border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.k-theme table.wt-facts-table th,
+.k-theme table.wt-facts-table td {
+  padding: .65rem .9rem;
+  border-bottom: 1px solid var(--k-border);
+  color: var(--k-text);
+}
+
+.k-theme table.wt-facts-table th {
+  font-weight: 600;
+  color: var(--k-text-strong);
+  width: 60%;
+}
+
+.k-theme table.wt-facts-table tr:nth-child(even) th,
+.k-theme table.wt-facts-table tr:nth-child(even) td {
+  background: var(--k-surface-2);
+}
+
+.k-theme table.wt-facts-table tr:last-child th,
+.k-theme table.wt-facts-table tr:last-child td {
+  border-bottom: 0;
+}

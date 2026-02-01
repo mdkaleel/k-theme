@@ -19,17 +19,27 @@ body.k-theme.k-theme--dark .k-login__topbar {
   background: rgba(12, 16, 28, 0.75);
 }
 
-body.k-theme.k-theme--dark .card,
+/*body.k-theme.k-theme--dark .card,*/
 body.k-theme.k-theme--dark .card-header,
 body.k-theme.k-theme--dark .card-body,
-body.k-theme.k-theme--dark .dropdown-menu,
-body.k-theme.k-theme--dark .modal-content,
-body.k-theme.k-theme--dark .list-group-item,
-body.k-theme.k-theme--dark .table {
+/*body.k-theme.k-theme--dark .dropdown-menu,
+body.k-theme.k-theme--dark .modal-content, */
+body.k-theme.k-theme--dark .list-group-item/*,
+body.k-theme.k-theme--dark .table*/ {
   background-color: var(--k-surface) !important;
   color: var(--k-text) !important;
   border-color: var(--k-border) !important;
 }
+
+body.k-theme.k-theme--dark .card,
+body.k-theme.k-theme--dark .dropdown-menu,
+body.k-theme.k-theme--dark .modal-content {
+  background-color: var(--k-surface);
+  color: var(--k-text);
+  border-color: var(--k-border);
+}
+
+
 
 body.k-theme.k-theme--dark .table thead th,
 body.k-theme.k-theme--dark .table tbody td {
@@ -44,11 +54,25 @@ body.k-theme.k-theme--dark .btn-link {
   color: var(--k-text) !important;
 }
 
-body.k-theme.k-theme--dark .form-control,
+/*body.k-theme.k-theme--dark .form-control,
 body.k-theme.k-theme--dark .form-select,
 body.k-theme.k-theme--dark .input-group-text {
   background-color: var(--k-surface-2) !important;
   border-color: var(--k-border) !important;
+}*/
+
+body.k-theme.k-theme--dark .form-control,
+body.k-theme.k-theme--dark .form-select,
+body.k-theme.k-theme--dark .input-group-text {
+  background-color: var(--k-surface-2);
+  border-color: var(--k-border);
+  color: var(--k-text);
+}
+
+/* Explicit dark hover for table rows */
+.k-theme .table > tbody > tr:hover > * {
+  background-color: var(--k-surface-2);
+  color: var(--k-text);
 }
 
 body.k-theme.k-theme--dark .dropdown-item:hover,
@@ -104,3 +128,49 @@ body.k-theme.k-theme--dark.wt-route-LoginPage button[data-wt-show-password-text]
 body.k-theme.k-theme--dark.wt-route-LoginPage button[data-wt-hide-password-text]::before {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23cbd5e1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E");
 }
+
+/* Header/footer consistency */
+body.k-theme.k-theme--dark footer {
+  background: var(--k-surface);
+  border-top: 1px solid var(--k-border);
+}
+
+/* ==========================================================
+   Ancestors chart – DARK (webtrees-compatible)
+   ========================================================== */
+
+body.k-theme.k-theme--dark .wt-chart-ancestors {
+  background: transparent;
+}
+
+/* Chart boxes */
+body.k-theme.k-theme--dark .wt-chart-box {
+  background-color: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--k-text);
+}
+
+/* Names */
+body.k-theme.k-theme--dark .wt-chart-box-name {
+  color: #e5e7eb;
+  font-weight: 600;
+}
+
+/* Facts */
+body.k-theme.k-theme--dark .wt-chart-box-facts {
+  color: #cbd5e1;
+}
+
+/* SVG connectors */
+body.k-theme.k-theme--dark .wt-chart-ancestors svg line,
+body.k-theme.k-theme--dark .wt-chart-ancestors svg path {
+  stroke: rgba(255, 255, 255, 0.45);
+  stroke-width: 1.2;
+}
+
+/* Hover / focus */
+body.k-theme.k-theme--dark .wt-chart-box:hover {
+  border-color: var(--k-accent);
+  box-shadow: 0 0 0 2px rgba(106, 166, 255, 0.25);
+}
+
